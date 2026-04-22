@@ -4,6 +4,7 @@ import {
   useMemo,
   useState,
   type ChangeEvent,
+  type SubmitEvent,
 } from "react";
 
 import { useProducts } from "./useProducts";
@@ -81,7 +82,7 @@ export function useFilter() {
       : filteredProducts;
   }, [filteredProducts, filters]);
 
-  const handleFindProduct = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFindProduct = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFilters((prev) => ({
       ...prev,

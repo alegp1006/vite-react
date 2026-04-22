@@ -5,6 +5,9 @@ export async function getProducts() {
     const res = await fetch(
       "https://dummyjson.com/products/?limit=0&delay=2000",
     );
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
     const data = await res.json();
     const product = data.products;
 
@@ -20,6 +23,11 @@ export async function getProducts() {
       image: p.images,
     }));
   } catch (err) {
-    throw new Error("Error to get products: " + err.message);
+    if (err instanceof Error) {
+      throw new Error(`Error to get products: ${err.message}`);
+    }
+
+    // Si no es un Error (caso raro), lanzamos algo genérico
+    throw new Error("An unknown error occurred");
   }
 }

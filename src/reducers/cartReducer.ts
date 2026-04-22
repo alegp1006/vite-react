@@ -1,6 +1,16 @@
-export const initialCartState = [];
+import type { ProductCart } from "../models/product-cart";
+type CartAction =
+  | { type: "ADD_TO_CART"; payload: ProductCart }
+  | { type: "REMOVE_FROM_CART"; payload: { id: number } }
+  | { type: "UPDATE_QUANTITY_BY_ONE"; payload: { id: number } }
+  | { type: "DECREASE_QUANTITY_BY_ONE"; payload: { id: number } }
+  | { type: "CLEAR_CART" };
+export const initialCartState: ProductCart[] = [];
 
-export function reducer(state, action) {
+export function reducer(
+  state: ProductCart[],
+  action: CartAction,
+): ProductCart[] {
   switch (action.type) {
     case "ADD_TO_CART": {
       const { id } = action.payload;

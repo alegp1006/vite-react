@@ -3,19 +3,16 @@ import { initialCartState, reducer } from "../reducers/cartReducer";
 import type { ProductCart } from "../models/product-cart";
 import type { Product } from "../models/product";
 
-interface ProductCartProps {
-  product: ProductCart;
-}
 interface CartProviderProps {
   children: ReactNode;
 }
 interface CartContextType {
   cart: ProductCart[];
   addToCart: (product: Product) => void;
-  updateQuantityByOne: (product: ProductCartProps) => void;
-  decreeseQuantityByOne: (product: ProductCartProps) => void;
+  updateQuantityByOne: (product: ProductCart) => void;
+  decreeseQuantityByOne: (product: ProductCart) => void;
   clearCart: () => void;
-  removeProductFromCart: (product: ProductCartProps) => void;
+  removeProductFromCart: (product: ProductCart) => void;
   totalPrice: number;
   totalProducts: number;
 }
@@ -35,26 +32,26 @@ export const cartContext = createContext<CartContextType>(initialContextValue);
 export function CartProvider({ children }: CartProviderProps) {
   const [state, dispatch] = useReducer(reducer, initialCartState);
 
-  const localStorage = (state: ProductCartProps) => {
+  const localStorage = (state: ProductCart[]) => {
     window.localStorage.setItem("cart", JSON.stringify(state));
   };
 
   const addToCart = (product: Product) => {
     dispatch({
       type: "ADD_TO_CART",
-      payload: product,
+      payload: product as ProductCart,
     });
     //localStorage(state);
   };
 
-  const updateQuantityByOne = (product: ProductCartProps) => {
+  const updateQuantityByOne = (product: ProductCart) => {
     dispatch({
       type: "UPDATE_QUANTITY_BY_ONE",
       payload: product,
     });
     localStorage(state);
   };
-  const decreeseQuantityByOne = (product: ProductCartProps) => {
+  const decreeseQuantityByOne = (product: ProductCart) => {
     dispatch({
       type: "DECREASE_QUANTITY_BY_ONE",
       payload: product,
@@ -64,12 +61,12 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const clearCart = () => {
     dispatch({
-      type: "",
+      type: "CLEAR_CART",
     });
     localStorage(state);
   };
 
-  const removeProductFromCart = (product: ProductCartProps) => {
+  const removeProductFromCart = (product: ProductCart) => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: product,
@@ -78,13 +75,15 @@ export function CartProvider({ children }: CartProviderProps) {
   };
 
   const totalProducts = state.length;
-  const totalPrice = state
-    .reduce(
-      (acc: number, product: ProductCart) =>
-        acc + product.price * product.quantity,
-      0,
-    )
-    .toFixed(2);
+  const totalPrice = Number(
+    state
+      .reduce(
+        (acc: number, product: ProductCart) =>
+          acc + product.price * product.quantity,
+        0,
+      )
+      .toFixed(2),
+  );
 
   return (
     <cartContext.Provider
