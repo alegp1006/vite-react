@@ -93,8 +93,32 @@
     color: var(--light-bg);
   }
 }
+.product-button-selected {
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  padding: 6px 16px;
+  outline: none;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+.product-button-selected:hover {
+  background-color: var(--light-bg);
+  border-color: var(--light-bg);
+  color: var(--primary-color);
+  .add-icon {
+    color: var(--primary-color);
+  }
+}
 
 .product-button > p {
+  font-size: 16px;
+}
+.product-button-selected > p {
   font-size: 16px;
 }
 

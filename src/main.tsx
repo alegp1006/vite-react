@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")!).render(
         <CartProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<App />} />
+              <Route path="/vite-react/" element={<App />} />
               <Route path="/cart" element={<CartItem />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="*" element={<PagenotFound />} />

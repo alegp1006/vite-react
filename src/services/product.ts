@@ -12,7 +12,7 @@ export async function getProducts() {
     const product = data.products;
 
     return product?.map((p: Product) => ({
-      ID: p.id,
+      id: p.id,
       title: p.title,
       category: p.category,
       price: p.price,

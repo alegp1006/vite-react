@@ -18,7 +18,7 @@ export function PagenotFound() {
         </p>
       </div>
 
-      <Link className="PNF-link" to={"/"}>
+      <Link className="PNF-link" to={"/vite-react/"}>
         <Home />
         <p>volver atras</p>
       </Link>

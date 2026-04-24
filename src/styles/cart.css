@@ -1,5 +1,6 @@
 .cart-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -7,7 +8,7 @@
 
 .cart {
   width: 100%;
-  margin: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -56,4 +57,10 @@
 
 .summary-button:hover {
   box-shadow: 0 0 5px var(--primary-color);
+}
+
+@media screen and (width >= 700px) {
+  .cart-section {
+    flex-direction: row;
+  }
 }

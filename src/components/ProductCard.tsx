@@ -9,6 +9,8 @@ interface productCardProps {
   titulo: string;
   rating: number;
   precio: number;
+  buttonText: string;
+  buttonStyle: string;
   handleFunction: () => void;
 }
 
@@ -20,6 +22,8 @@ export function ProductCard({
   rating,
   precio,
   handleFunction,
+  buttonText = "Añadir",
+  buttonStyle = "product-button",
 }: productCardProps) {
   return (
     <div className="product">
@@ -38,9 +42,9 @@ export function ProductCard({
         <p className="product-title">{titulo}</p>
         <span className="product-price">${precio}</span>
 
-        <button className="product-button" onClick={handleFunction}>
+        <button className={`${buttonStyle}`} onClick={handleFunction}>
           <AddCart className="add-icon" width={"16px"} height={"16px"} />
-          <p>Añadir</p>
+          <p>{buttonText}</p>
         </button>
       </section>
     </div>

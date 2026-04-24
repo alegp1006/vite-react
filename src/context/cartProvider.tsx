@@ -12,7 +12,7 @@ interface CartContextType {
   updateQuantityByOne: (product: ProductCart) => void;
   decreeseQuantityByOne: (product: ProductCart) => void;
   clearCart: () => void;
-  removeProductFromCart: (product: ProductCart) => void;
+  removeProductFromCart: (product: Product) => void;
   totalPrice: number;
   totalProducts: number;
 }
@@ -31,7 +31,6 @@ export const cartContext = createContext<CartContextType>(initialContextValue);
 
 export function CartProvider({ children }: CartProviderProps) {
   const [state, dispatch] = useReducer(reducer, initialCartState);
-
   const localStorage = (state: ProductCart[]) => {
     window.localStorage.setItem("cart", JSON.stringify(state));
   };
@@ -66,7 +65,7 @@ export function CartProvider({ children }: CartProviderProps) {
     localStorage(state);
   };
 
-  const removeProductFromCart = (product: ProductCart) => {
+  const removeProductFromCart = (product: Product) => {
     dispatch({
       type: "REMOVE_FROM_CART",
       payload: product,

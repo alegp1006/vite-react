@@ -10,7 +10,6 @@ import {
 import { useProducts } from "./useProducts";
 import { FiltersContext, type Filters } from "../context/filter";
 import type { Product } from "../models/product";
-//import { useProducts } from "./useProducts";
 
 export function useFilter() {
   const { filters, setFilters } = useContext(FiltersContext);
@@ -58,7 +57,7 @@ export function useFilter() {
             (filters.category === "all" ||
               filters.category === prod.category) &&
             prod.rating <= filters.rating &&
-            (filters.nameProd === "" || prod.title === filters.nameProd)
+            (filters.nameProd === "" || prod.title === prodName)
           );
         })
       : sliceProducts;
@@ -86,12 +85,15 @@ export function useFilter() {
     e.preventDefault();
     setFilters((prev) => ({
       ...prev,
-      nameProd: e.target.value,
+      nameProd: prodName,
     }));
+    console.log(filters.nameProd + "aqui es el nombre del producto");
   };
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setProdName(e.target.value);
+
+    console.log(prodName);
   };
 
   const handleSortByValue = (e: ChangeEvent<HTMLSelectElement>) => {
