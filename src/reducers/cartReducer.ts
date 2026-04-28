@@ -16,7 +16,7 @@ export function reducer(
       const { id } = action.payload;
 
       const productInCart = state.findIndex((item) => item.id === id);
-      console.log(productInCart);
+
       if (productInCart >= 0) {
         const newState = structuredClone(state);
         newState[productInCart].quantity += 1;

@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useCart } from "../hooks/useCart";
 import "../styles/cart.css";
 import { CartTable } from "./CartTable";
@@ -44,6 +45,7 @@ export function CartItem() {
           }}>
           Clean Cart
         </button>
+        <Link to={"/checkout"}>checkout</Link>
       </aside>
     </section>
   );

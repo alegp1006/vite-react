@@ -9,6 +9,7 @@ import { ProductProvider } from "./context/productContext.jsx";
 import { Filteredprovider } from "./context/filter.jsx";
 import { CartItem } from "./components/CartItem.jsx";
 import { PagenotFound } from "./pages/PageNotFound.js";
+import { Checkout } from "./pages/Checkout.js";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
             <Routes>
               <Route path="/vite-react/" element={<App />} />
               <Route path="/cart" element={<CartItem />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="*" element={<PagenotFound />} />
               <Route path="/product/*" element={<PagenotFound />} />

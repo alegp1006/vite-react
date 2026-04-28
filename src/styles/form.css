@@ -1,0 +1,119 @@
+.form {
+  background-color: var(--dark-bg);
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+}
+.legend {
+  text-align: center;
+  font-size: 20px;
+}
+
+.label-form {
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-surface-text);
+}
+
+.name-lastname {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-form {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: var(--dark-surface);
+  color: var(--dark-surface-text);
+  border: 2px solid var(--dark-surface-text);
+  border-radius: 6px;
+}
+.input-form:hover,
+.input-form:focus,
+.input-form:active {
+  outline: none;
+  border-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.select-form {
+  width: 100%;
+  outline: none;
+  font-size: 12px;
+  padding: 8px 12px;
+  background-color: var(--dark-surface);
+  border: 2px solid var(--dark-surface-text);
+  color: var(--dark-surface-text);
+  border-radius: 6px;
+}
+
+.select-form:hover,
+.select-form:active,
+.select-form:focus {
+  border-color: var(--primary-color);
+}
+
+.select-form ::picker(select) {
+  appearance: base-select;
+}
+
+@media screen and (width >= 700px) {
+  .form {
+    margin: auto;
+    max-width: 600px;
+  }
+  .name-lastname {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+  .label-form {
+    align-items: start;
+  }
+}
+
+.submit-button {
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.submit-button:hover,
+.submit-button:active,
+.submit-button:focus {
+  scale: 1.01;
+  opacity: 0.9;
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.text-error {
+  padding: 2px 0;
+  font-weight: 500;
+  font-size: 12px;
+}
